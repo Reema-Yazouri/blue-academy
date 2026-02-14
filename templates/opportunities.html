@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="courses-section">
+    <h2>الفرص المتاحة</h2>
+
+    <div class="cards">
+        <!-- مثال على إعلان فرصة -->
+        <div class="card">
+            <h3>دورة اعداد مدربين </h3>
+            <p class="desc">مدة الدورة: 2 أسابيع | تبدأ بتاريخ: 30 نيسان 2026</p>
+            <button class="main-btn"
+onclick="window.location.href='{{ url_for('opportunity_register') }}'">
+    اشترك الآن
+</button>
+
+        </div>
+        <div class="card">
+            <h3>ورشة الذكاء الاصطناعي</h3>
+            <p class="desc">مدة الورشة: يومان | تبدأ بتاريخ: 25 فبراير 2026</p>
+            <button class="main-btn"
+onclick="window.location.href='{{ url_for('opportunity_register') }}'">
+    اشترك الآن
+</button>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

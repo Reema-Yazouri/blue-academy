@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Blue Academy</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo-removebg-preview.png') }}" alt="Logo">
+        <span class="logo-text"></span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="{{ url_for('home') }}">الرئيسية</a></li>
+        <li><a href="{{ url_for('home') }}#courses">الدورات</a></li>
+        <li><a href="{{ url_for('team') }}">الفريق</a></li>
+        <li><a href="{{ url_for('home') }}#services">الخدمات</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('logout') }}">تسجيل خروج</a></li>
+        {% else %}
+        <li><a href="{{ url_for('register') }}">امتلك عضوية</a></li>
+        <li><a href="{{ url_for('login') }}" class="hover-effect">تسجيل دخول</a></li>
+        {% endif %}
+    </ul>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-container">
+          {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+</nav>
+
+{% block content %}{% endblock %}
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2026 Blue Academy. جميع الحقوق محفوظة.</p>
+    <p>
+        <a href="https://instagram.com/blueacademy_marketing" target="_blank">Instagram</a> |
+        <a href="https://api.whatsapp.com/send?phone=9725999011843" target="_blank">WhatsApp</a> |
+        <a href="https://facebook.com/blueacademy" target="_blank">Facebook</a>
+    </p>
+</footer>
+
+</body>
+</html>

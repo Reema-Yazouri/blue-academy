@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة تحكم الأدمن</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #4b7bec;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f1f2f6;
+        }
+
+        .paid {
+            color: green;
+            font-weight: bold;
+        }
+
+        .unpaid {
+            color: red;
+            font-weight: bold;
+        }
+
+        .disabled {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<h2>لوحة تحكم الأدمن – المستخدمون</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>الاسم</th>
+            <th>رقم الجوال</th>
+            <th>البريد الإلكتروني</th>
+            <th>التخصص</th>
+            <th>حالة الدفع</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.major }}</td>
+            <td>
+                {% if user.role != 'admin' %}
+                    <form method="POST" action="{{ url_for('toggle_paid', user_id=user.id) }}">
+                        <label style="cursor:pointer;">
+                            <input type="checkbox"
+                                   onchange="this.form.submit()"
+                                   {% if user.paid %}checked{% endif %}>
+                            {% if user.paid %}
+                                <span class="paid">مدفوع</span>
+                            {% else %}
+                                <span class="unpaid">غير مدفوع</span>
+                            {% endif %}
+                        </label>
+                    </form>
+                {% else %}
+                    <span class="disabled">—</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

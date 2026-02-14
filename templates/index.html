@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero text-center">
+    <h1>Blue Academy</h1>
+    <p>تعلّم بذكاء، وابنِ مستقبلك</p>
+    {% if not current_user.is_authenticated %}
+    <div class="home-cta">
+        <button onclick="window.location.href='{{ url_for('register') }}'">امتلك عضوية</button>
+        <p>هل تمتلك حساب؟ <a href="{{ url_for('login') }}">تسجيل دخول</a></p>
+    </div>
+    {% endif %}
+</section>
+
+<!-- من نحن -->
+<section id="about" class="about-section">
+    <div class="about-image">
+        <img src="{{ url_for('static', filename='images/pexels-pixabay-289738.jpg') }}" alt="About Image">
+    </div>
+    <div class="about-text">
+        <h2>من نحن</h2>
+        <p>
+        أكاديمية بلو لتطوير المهارات والتدريب توفر دورات احترافية في مجالات متعددة مثل إدارة الأعمال، المحاسبة، البرمجة، الترجمة، الذكاء الاصطناعي.
+        نحن نساعدك على التقديم للجامعات، تجهيز السيرة الذاتية، وتحضير أوراق المنح بطريقة احترافية.
+        </p>
+        <!-- الزر منسق بشكل كامل -->
+<div class="home-cta" style="margin-top: 20px; text-align: center;">
+    <button class="main-btn" onclick="window.location.href='{{ url_for('team') }}'">
+        تعرف علينا
+    </button>
+</div>
+
+    </div>
+    
+</section>
+
+<!-- الدورات -->
+<section id="courses" class="courses-section">
+    <h2>الدورات</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>البرمجة</h3>
+            <p class="desc">تعلم أساسيات البرمجة بلغة Python وJavaScript.</p>
+            <button class="main-btn" onclick="window.location.href='{{ url_for('opportunities') }}'">
+                سجل الآن
+            </button>
+        </div>
+        <div class="card">
+            <h3>المحاسبة</h3>
+            <p class="desc">تعلم المحاسبة المالية والضريبية بطريقة عملية.</p>
+            <button class="main-btn" onclick="window.location.href='{{ url_for('opportunities') }}'">
+                سجل الآن
+            </button>
+        </div>
+        <div class="card">
+            <h3>الذكاء الاصطناعي</h3>
+            <p class="desc">مقدمة شاملة في تقنيات الذكاء الاصطناعي.</p>
+            <button class="main-btn" onclick="window.location.href='{{ url_for('opportunities') }}'">
+                سجل الآن
+            </button>
+        </div>
+        <div class="card">
+            <h3>إدارة الأعمال</h3>
+            <p class="desc">دورات لتطوير مهارات الإدارة والقيادة.</p>
+            <button class="main-btn" onclick="window.location.href='{{ url_for('opportunities') }}'">
+                سجل الآن
+            </button>
+        </div>
+        <div class="card">
+            <h3>الترجمة</h3>
+            <p class="desc">دورات لتحسين مهارات الترجمة الاحترافية.</p>
+            <button class="main-btn" onclick="window.location.href='{{ url_for('opportunities') }}'">
+                سجل الآن
+            </button>
+        </div>
+    </div>
+
+    <!-- زر لعرض الفرص المتاحة -->
+    <div class="home-cta" style="margin-top: 30px;">
+        <button onclick="window.location.href='{{ url_for('opportunities') }}'">
+            تصفح الفرص المتاحة
+        </button>
+    </div>
+</section>
+
+<!-- الخدمات -->
+<section id="services" class="services-section">
+    <h2>الخدمات</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>إنشاء سيرة ذاتية (CV)</h3>
+            <p class="desc">صياغة سيرة ذاتية تبرز مهاراتك وخبراتك بطريقة احترافية.</p>
+            <a href="https://wa.me/972595643167?text=مرحباً! أود حجز الخدمة." target="_blank" class="main-btn">
+                احجز الآن
+            </a>
+            
+        </div>
+        <div class="card">
+            <h3>التقديم على الجامعات</h3>
+            <p class="desc">مساعدتك في التقديم للجامعات والخطط الدراسية.</p>
+            <a href="https://wa.me/972595643167?text=مرحباً! أود حجز الخدمة." target="_blank" class="main-btn">
+                احجز الآن
+            </a>
+            
+        </div>
+        <div class="card">
+            <h3>تجهيز أوراق المنح</h3>
+            <p class="desc">نساعدك في تجهيز وتقديم طلبات المنح الدراسية بسهولة.</p>
+            <a href="https://wa.me/972595643167?text=مرحباً! أود حجز الخدمة." target="_blank" class="main-btn">
+                احجز الآن
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}

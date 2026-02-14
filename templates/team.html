@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/team.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+{% endblock %}
+
+{% block content %}
+<section class="team-section">
+    <h2>فريق أكاديمية Blue</h2>
+    <p>الهيكل الإداري والتنفيذي للأكاديمية بعد التحديثات الأخيرة</p>
+
+    <div class="team-grid">
+
+        <!-- مستوى 1: الإدارة العليا -->
+        <div class="team-card" data-aos="fade-down">
+            <h3>د. أديب السقا</h3>
+            <span>رئيس الأكاديمية</span>
+            <p>قيادة الأكاديمية ووضع الرؤية الاستراتيجية.</p>
+        </div>
+        <div class="team-card" data-aos="fade-down">
+            <h3>د. مرفت النجار</h3>
+            <span>نائب الرئيس</span>
+            <p>دعم الرئيس والإشراف على العمليات الإدارية.</p>
+        </div>
+
+        <!-- مستوى 2: إدارة تنفيذية وأعضاء مجلس -->
+        <div class="team-card" data-aos="fade-up">
+            <h3>د. خالد العطار</h3>
+            <span>أمين السر والمدير التنفيذي</span>
+            <p>تنسيق العمل الإداري اليومي ومتابعة المشاريع.</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+            <h3>د. مصعب الشيخ خليل</h3>
+            <span>عضو مجلس إدارة</span>
+            <p>متابعة القرارات ودعم إدارة الأكاديمية.</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+            <h3>أ. محمد السقا</h3>
+            <span>أمين الصندوق</span>
+            <p>إدارة الموارد المالية والتقارير المالية للأكاديمية.</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+            <h3>أ. عبير اليازوري</h3>
+            <span>عضو مجلس إدارة</span>
+            <p>المشاركة في التخطيط واتخاذ القرارات الإدارية.</p>
+        </div>
+
+        <!-- مستوى 3: الفريق التنفيذي -->
+        <div class="team-card" data-aos="fade-up">
+            <h3>أ. إنعام الفرا</h3>
+            <span>نائب المدير التنفيذي</span>
+            <p>منسق النشر والسوشيال ميديا</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+            <h3>م. ريما اليازوري</h3>
+            <span>منسق العلاقات العامة والخارجية</span>
+            <p>العلاقات الخارجية والتواصل المؤسسي</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+            <h3>أ. ندى العبادلة</h3>
+            <span>منسق التدريب والتطوير</span>
+            <p>الإشراف على التدريب والتطوير المهني</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+            <h3>أ. رنا عبد القادر</h3>
+            <span>منسق المتابعة والتقييم</span>
+            <p>متابعة الأداء والتقييم الدوري للبرامج</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+            <h3>أ. دانيا وافي</h3>
+            <span>منسق اللوجستيات والمشتريات</span>
+            <p>تنظيم الموارد والمشتريات واللوجستيات</p>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, easing: 'ease-in-out' });
+</script>
+{% endblock %}

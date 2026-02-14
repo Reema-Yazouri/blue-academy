@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-container">
+    <h2>تسجيل الدخول</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.email.label }}<br>{{ form.email(size=30) }}<br><br>
+        {{ form.password.label }}<br>{{ form.password(size=30) }}<br><br>
+        {{ form.submit(class="creative-btn") }}
+    </form>
+    <p>ليس لديك حساب؟ <a href="{{ url_for('register') }}">إنشاء حساب جديد</a></p>
+</div>
+{% endblock %}

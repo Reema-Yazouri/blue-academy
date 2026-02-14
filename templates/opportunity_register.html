@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="opportunity-container">
+    <h2>احجز مقعد </h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <label>{{ form.name.label }}</label>
+        {{ form.name(class="form-input") }}
+
+        <label>{{ form.major.label }}</label>
+        {{ form.major(class="form-input") }}
+
+        <label>{{ form.phone.label }}</label>
+        {{ form.phone(class="form-input") }}
+
+        {{ form.submit(class="creative-btn") }}
+    </form>
+</div>
+{% endblock %}
