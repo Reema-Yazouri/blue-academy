@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, url_for, flash, abort
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import (
     LoginManager, UserMixin,
     login_user, logout_user,
@@ -12,9 +11,9 @@ import os
 
 from forms import RegisterForm, LoginForm, OpportunityForm
 
-# ======================
+
 # إعداد التطبيق
-# ======================
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'thisisasecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blueacademy.db'
@@ -22,40 +21,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
-db = SQLAlchemy(app)
+from models import db, User, Opportunity, OpportunityRegistration
+db.init_app(app)
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-
-# ======================
-# موديل المستخدم
-# ======================
-class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(150), nullable=False)
-    email = db.Column(db.String(150), unique=True, nullable=False)
-    phone = db.Column(db.String(20), nullable=False)
-    major = db.Column(db.String(150), nullable=False)
-    password_hash = db.Column(db.String(200), nullable=False)
-    cv_file = db.Column(db.String(200))
-    role = db.Column(db.String(20), default="user")
-    paid = db.Column(db.Boolean, default=False)
-
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
-
-# ======================
-# موديل تسجيل الفرص
-# ======================
-class OpportunityRegistration(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(150), nullable=False)
-    major = db.Column(db.String(150), nullable=False)
-    phone = db.Column(db.String(20), nullable=False)
 
 @login_manager.user_loader
 def load_user(user_id):
