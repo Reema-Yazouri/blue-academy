@@ -43,3 +43,12 @@ class OpportunityRegistration(db.Model):
     opportunity_id = db.Column(db.Integer, db.ForeignKey('opportunity.id'))  # 👈 اختياري لو بدك تربطي التسجيل بالدورة
 
     opportunity = db.relationship('Opportunity', backref='registrations')
+
+class OpportunityRegistration(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.String(100))
+    major = db.Column(db.String(100))
+    phone = db.Column(db.String(20))
+
+    opportunity_id = db.Column(db.Integer, db.ForeignKey('opportunity.id'))

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-container">
+    <h2>إضافة فرصة</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.title.label }}
+        {{ form.title(class="form-input") }}
+
+        {{ form.description.label }}
+        {{ form.description(class="form-input") }}
+
+        {{ form.field.label }}
+        {{ form.field(class="form-input") }}
+
+        {{ form.submit(class="creative-btn") }}
+    </form>
+</div>
+
+{% endblock %}
